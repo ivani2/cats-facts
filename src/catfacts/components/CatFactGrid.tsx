@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { CatFactCard } from "./CatFactCard";
 import { useCatFactSlice } from "../hooks/useCatFactsSlice";
-import useInfiniteScroll from "../../shared/utils/useInfiniteScroll";
+import useInfiniteScroll from "../../shared/utils/hooks/useInfiniteScroll";
 import { LoadingSpinner } from "../../shared/components/LoadingSpinner";
 import { IoArrowUpCircleOutline } from "react-icons/io5";
 import { CatFactGridSkeleton } from "./CatFactGridSkeleton";
@@ -55,7 +55,7 @@ export const CatFactGrid: FC = () => {
         <div className="grid grid-cols-1 w-full mx-2 sm:w-1/2 sm:mx-0 mb-28 mt-20">
           <div className="w-full">
             {catFactQuery.data?.pages.flat().map((catFact, index) => (
-              <CatFactCard key={index + "cat"} catFact={catFact} />
+              <CatFactCard key={index + "cat"} catFact={catFact} isCatFactsQueryFetched={catFactQuery.isFetched} />
             ))}
           </div>
 

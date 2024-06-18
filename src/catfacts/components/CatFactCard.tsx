@@ -4,10 +4,11 @@ import { CatFact } from "../interfaces/cat-facts";
 
 type Props = {
   catFact: CatFact;
+  isCatFactsQueryFetched: boolean;
 };
 
-export const CatFactCard = ({ catFact }: Props) => {
-  const { randomPeopleQuery } = usePersonRandom({ catFact: catFact.fact });
+export const CatFactCard = ({ catFact, isCatFactsQueryFetched }: Props) => {
+  const { randomPeopleQuery } = usePersonRandom({ catFact: catFact.fact, isCatFactsQueryFetched });
 
   /* Si dejo esta pieza de código, tendríamos bastantes gatitos tristes, ya que tooManyRequests es un error que React Query nos ayuda a
   solventar ya que hace más intentos cuando recibe una respuesta fallida, entonces prefiero dejar que React Query haga más peticiones para
@@ -20,7 +21,7 @@ export const CatFactCard = ({ catFact }: Props) => {
 
   return (
     <>
-      <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
+      <div className="w-full relative grid grid-cols-1 p-4 mb-8 border rounded-lg bg-white shadow-lg">
         <div className="relative flex gap-4">
           {randomPeopleQuery.isFetching || randomPeopleQuery.isLoading ? (
             <div

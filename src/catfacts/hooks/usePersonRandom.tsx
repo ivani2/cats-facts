@@ -1,14 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { getRandomPeople } from "../services/randomPeopleActions";
 
-interface Props{
+interface Props {
   catFact: string;
+  isCatFactsQueryFetched: boolean;
 }
 
-export const usePersonRandom = ({catFact}:Props) => {
+export const usePersonRandom = ({ catFact, isCatFactsQueryFetched }: Props) => {
   const randomPeopleQuery = useQuery({
-    queryKey: ["randomPeople",{catFact}],
+    queryKey: ["randomPeople", { catFact }],
     queryFn: getRandomPeople,
+    enabled: isCatFactsQueryFetched,
   });
   return { randomPeopleQuery };
 };
