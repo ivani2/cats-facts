@@ -14,9 +14,6 @@ export const CatFactCardSkeleton = () => {
               <p
                 className={`w-full bg-gray-300 rounded-lg shadow-md p-4 animate-pulse-delay-1`}
               ></p>
-              <a className="text-gray-500 text-xl" href="#">
-                <i className="fa-solid fa-trash"></i>
-              </a>
             </div>
             <p
               className={`w-full bg-gray-300 rounded-lg shadow-md p-4 animate-pulse-delay-2 `}

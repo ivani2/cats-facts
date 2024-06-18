@@ -21,7 +21,7 @@ export const CatFactCard = ({ catFact, isCatFactsQueryFetched }: Props) => {
 
   return (
     <>
-      <div className="w-full relative grid grid-cols-1 p-4 mb-8 border rounded-lg bg-white shadow-lg">
+      <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
         <div className="relative flex gap-4">
           {randomPeopleQuery.isFetching || randomPeopleQuery.isLoading ? (
             <div
@@ -55,9 +55,6 @@ export const CatFactCard = ({ catFact, isCatFactsQueryFetched }: Props) => {
                   ? randomPeopleQuery.data?.name.first
                   : ""}
               </p>
-              <a className="text-gray-500 text-xl" href="#">
-                <i className="fa-solid fa-trash"></i>
-              </a>
             </div>
             <p
               className={`${
