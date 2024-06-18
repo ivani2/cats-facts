@@ -1,3 +1,4 @@
+// import { ErrorPage } from "../../shared/components/ErrorPage";
 import { usePersonRandom } from "../hooks/usePersonRandom";
 import { CatFact } from "../interfaces/cat-facts";
 
@@ -7,6 +8,15 @@ type Props = {
 
 export const CatFactCard = ({ catFact }: Props) => {
   const { randomPeopleQuery } = usePersonRandom({ catFact: catFact.fact });
+
+  /* Si dejo esta pieza de código, tendríamos bastantes gatitos tristes, ya que tooManyRequests es un error que React Query nos ayuda a
+  solventar ya que hace más intentos cuando recibe una respuesta fallida, entonces prefiero dejar que React Query haga más peticiones para
+  que todos los gatitos tengan una persona asignada, de tal forma que si yo tuviera acceso a la API de randomPeople, pediría
+  que no me bloqueen por tooManyRequests, o asignaríamos más peticiones o mejoraríamos la petición para siempre enviar una randomPerson
+   */
+  // if (randomPeopleQuery.isError) {
+  //   return <ErrorPage errorMessage={randomPeopleQuery.error.message} />;
+  // }
 
   return (
     <>
@@ -36,7 +46,7 @@ export const CatFactCard = ({ catFact }: Props) => {
               <p
                 className={`${
                   randomPeopleQuery.isFetching || randomPeopleQuery.isLoading
-                    ? "w-full bg-gray-300 rounded-lg shadow-md p-4 animate-pulse"
+                    ? "w-full bg-gray-300 rounded-lg shadow-md p-4 animate-pulse-delay-1"
                     : "relative text-xl whitespace-nowrap truncate overflow-hidden"
                 } `}
               >
@@ -51,7 +61,7 @@ export const CatFactCard = ({ catFact }: Props) => {
             <p
               className={`${
                 randomPeopleQuery.isFetching || randomPeopleQuery.isLoading
-                  ? "w-full bg-gray-300 rounded-lg shadow-md p-4 animate-pulse"
+                  ? "w-full bg-gray-300 rounded-lg shadow-md p-4 animate-pulse-delay-2"
                   : "text-gray-400 text-sm"
               } `}
             >
@@ -61,7 +71,15 @@ export const CatFactCard = ({ catFact }: Props) => {
             </p>
           </div>
         </div>
-        <p className="-mt-4 text-gray-500">{catFact.fact}</p>
+        <p
+          className={`${
+            !catFact || catFact.length == 0
+              ? "w-full bg-gray-300 rounded-lg shadow-md p-4 animate-pulse-delay-3"
+              : "-mt-4 text-gray-500"
+          }`}
+        >
+          {catFact.fact}
+        </p>
       </div>
     </>
   );

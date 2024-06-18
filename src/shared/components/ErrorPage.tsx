@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
-
-export const ErrorPage = () => {
+interface Props{
+  errorMessage?: string;
+}
+export const ErrorPage = ({errorMessage=":c"}:Props) => {
   const navigate = useNavigate();
 
   return (
@@ -11,10 +13,13 @@ export const ErrorPage = () => {
             <div className="absolute">
               <div className="">
                 <h1 className="my-2 text-gray-800 font-bold text-2xl">
-                  Looks like you've found the doorway to the great nothing
+                  Looks like something happened.
                 </h1>
                 <p className="my-2 text-gray-800">
-                  Sorry about that! Please visit our homepage to get where you
+                  Sorry about that!
+                  <h3>{errorMessage}</h3>
+                  <br />
+                  Please visit our homepage to get where you
                   need to go.
                 </p>
                 <button

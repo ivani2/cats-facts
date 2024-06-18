@@ -3,7 +3,6 @@ import { getCatFacts } from "../services/catActions";
 
 
 export const useCatFactSlice = () => {
-  //uuid para el queryKey //card
   const catFactQuery = useInfiniteQuery({
     queryKey: ["catfacts"],
     queryFn: getCatFacts,
