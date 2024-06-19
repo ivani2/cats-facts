@@ -9,7 +9,7 @@ Este proyecto fue creado con Vite y utiliza React con TypeScript y Tailwind CSS.
 
    ```bash
    git clone (https://github.com/ivani2/cats-facts)
-   cd your-repository
+
 
 2. Instalar dependencias
 ```npm install```
