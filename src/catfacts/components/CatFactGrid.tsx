@@ -73,6 +73,11 @@ export const CatFactGrid: FC = () => {
           {catFactQuery.hasNextPage && (
             <button
               onClick={() => catFactQuery.fetchNextPage()}
+              disabled={
+                catFactQuery.isLoading ||
+                catFactQuery.isFetching ||
+                catFactQuery.isFetchingNextPage
+              }
               className="w-1/2 bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 focus:outline-none flex items-center"
             >
               <IoArrowDown size={30} />
