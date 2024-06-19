@@ -6,11 +6,12 @@ interface Props {
   isCatFactsQueryFetched: boolean;
 }
 
-export const usePersonRandom = ({ catFact, isCatFactsQueryFetched }: Props) => {
+export const usePersonRandom = ({ catFact }: Props) => {
   const randomPeopleQuery = useQuery({
     queryKey: ["randomPeople", { catFact }],
     queryFn: getRandomPeople,
-    enabled: isCatFactsQueryFetched,
+    // enabled: isCatFactsQueryFetched,
+    retry: true,
   });
   return { randomPeopleQuery };
 };
