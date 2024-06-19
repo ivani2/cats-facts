@@ -8,7 +8,7 @@ Este proyecto fue creado con Vite y utiliza React con TypeScript y Tailwind CSS.
 1. Clonar el Repositorio
 
    ```bash
-   git clone (no puse público el repostorio, pero aqui está el .zip)
+   git clone (https://github.com/ivani2/cats-facts)
    cd your-repository
 
 2. Instalar dependencias
