@@ -74,7 +74,10 @@ export const CatFactGrid: FC = () => {
               &nbsp;Take me to the top!
             </button>
           )}
-          <Spinner />
+          {}
+          {catFactQuery.isFetchingNextPage && catFactQuery.hasNextPage && (
+            <Spinner />
+          )}
           {/* {catFactQuery.hasNextPage && (
             <button
               onClick={() => catFactQuery.fetchNextPage()}
