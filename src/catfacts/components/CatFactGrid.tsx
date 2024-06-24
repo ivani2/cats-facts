@@ -5,10 +5,11 @@ import useInfiniteScroll from "../../shared/utils/hooks/useInfiniteScroll";
 import { LoadingSpinner } from "../../shared/components/LoadingSpinner";
 import {
   // IoArrowDown,
-  IoArrowUpCircleOutline
+  IoArrowUpCircleOutline,
 } from "react-icons/io5";
 import { CatFactGridSkeleton } from "./CatFactGridSkeleton";
 import { ErrorPage } from "../../shared/components/ErrorPage";
+import { Spinner } from "../../shared/components/Spinner";
 
 export const CatFactGrid: FC = () => {
   const { catFactQuery } = useCatFactSlice();
@@ -73,6 +74,7 @@ export const CatFactGrid: FC = () => {
               &nbsp;Take me to the top!
             </button>
           )}
+          <Spinner />
           {/* {catFactQuery.hasNextPage && (
             <button
               onClick={() => catFactQuery.fetchNextPage()}
